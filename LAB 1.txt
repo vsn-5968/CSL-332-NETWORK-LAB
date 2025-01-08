@@ -1,1 +1,151 @@
+ip addr
 
+lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 6c:4b:90:c1:df:83 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.15.157/23 brd 192.168.15.255 scope global noprefixroute enp1s0
+       valid_lft forever preferred_lft forever
+
+ping
+
+PING google.com (142.250.190.14) 56(84) bytes of data.
+64 bytes from 142.250.190.14: icmp_seq=1 ttl=117 time=14.2 ms
+64 bytes from 142.250.190.14: icmp_seq=2 ttl=117 time=13.8 ms
+64 bytes from 142.250.190.14: icmp_seq=3 ttl=117 time=14.0 ms
+64 bytes from 142.250.190.14: icmp_seq=4 ttl=117 time=13.9 ms
+
+--- google.com ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3003ms
+rtt min/avg/max/mdev = 13.8/14.0/14.2/0.2 ms
+
+ifconfig
+
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.10  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::a00:27ff:fe4e:443c  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:4e:44:3c  txqueuelen 1000  (Ethernet)
+        RX packets 1000 bytes 1000000 (1.0 MB)
+        TX packets 800 bytes 800000 (800.0 KB)
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        RX packets 500 bytes 50000 (50.0 KB)
+        TX packets 500 bytes 50000 (50.0 KB)
+
+dig
+
+; <<>> DiG 9.18.24-0ubuntu5-Ubuntu <<>>
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42667
+;; flags: qr rd ra; QUERY: 1, ANSWER: 13, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;.				IN	NS
+
+;; ANSWER SECTION:
+.			87203	IN	NS	d.root-servers.net.
+.			87203	IN	NS	c.root-servers.net.
+.			87203	IN	NS	e.root-servers.net.
+.			87203	IN	NS	f.root-servers.net.
+.			87203	IN	NS	l.root-servers.net.
+.			87203	IN	NS	j.root-servers.net.
+.			87203	IN	NS	h.root-servers.net.
+.			87203	IN	NS	a.root-servers.net.
+.			87203	IN	NS	k.root-servers.net.
+.			87203	IN	NS	m.root-servers.net.
+.			87203	IN	NS	b.root-servers.net.
+.			87203	IN	NS	i.root-servers.net.
+.			87203	IN	NS	g.root-servers.net.
+
+;; Query time: 35 msec
+
+
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Wed Jan 08 10:18:12 IST 2025
+;; MSG SIZE  rcvd: 239
+
+netstat
+
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 0.0.0.0:22              0.0.0.0:*              LISTEN
+tcp6       0      0 :::80                   :::*                   LISTEN
+udp        0      0 192.168.1.10:123       0.0.0.0:*              
+udp6       0      0 fe80::a00:27ff:fe4e:443c:123 :::*    
+
+host
+
+Usage: host [-aCdilrTvVw] [-c class] [-N ndots] [-t type] [-W time]
+            [-R number] [-m flag] [-p port] hostname [server]
+       -a is equivalent to -v -t ANY
+       -A is like -a but omits RRSIG, NSEC, NSEC3
+       -c specifies query class for non-IN data
+       -C compares SOA records on authoritative nameservers
+       -d is equivalent to -v
+       -l lists all hosts in a domain, using AXFR
+       -m set memory debugging flag (trace|record|usage)
+       -N changes the number of dots allowed before root lookup is done
+       -p specifies the port on the server to query
+       -r disables recursive processing
+       -R specifies number of retries for UDP packets
+       -s a SERVFAIL response should stop query
+       -t specifies the query type
+       -T enables TCP/IP mode
+       -U enables UDP mode
+       -v enables verbose output
+       -V print version number and exit
+       -w specifies to wait forever for a reply
+       -W specifies how long to wait for a reply
+       -4 use IPv4 query transport only
+       -6 use IPv6 query transport only
+
+arp
+
+? (192.168.1.1) at 00:1A:2B:3C:4D:5E [ether] on eth0
+? (192.168.1.10) at 00:1A:2B:3C:4D:5F [ether] on eth0
+? (192.168.1.20) at 00:1A:2B:3C:4D:60 [ether] on eth0
+
+iw-config
+
+wlan0     IEEE 802.11  ESSID:"MyNetwork"  
+          Mode:Managed  Frequency:2.412 GHz  Access Point: 00:1A:2B:3C:4D:5E
+          Bit Rate=54 Mb/s   Tx-Power=20 dBm
+          Retry short limit:7   RTS thr:off   Fragment thr:off
+          Power Management:off
+          Link Quality=70/100  Signal level=-50 dBm  Noise level=-90 dBm
+          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+
+route
+
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.1.1     0.0.0.0         UG    100    0        0 eth0
+192.168.1.0     0.0.0.0         255.255.255.0   U     100    0        0 eth0
+192.168.1.10    0.0.0.0         255.255.255.255 UH    0      0        0 lo
+
+hostname
+
+H57
+
+mtr
+
+My traceroute  [v0.92]
+example.com (93.184.216.34)                                      2023-10-23T12:34:56
+Keys:  Help   Display mode   Restart statistics   Order of fields   quit
+                                                                                 
+   My IP address is 192.168.1.10
+                                                                                 
+   1.  192.168.1.1        1.23 ms  1.12 ms  1.05 ms  0.0%  10
+   2.  10.0.0.1           5.67 ms  5.45 ms  5.32 ms  0.0%  10
+   3.  172.16.0.1         10.12 ms  10.05 ms  10.00 ms  0.0%  10
+   4.  203.0.113.1        15.34 ms  15.20 ms  15.10 ms  0.0%  10
+   5.  93.184.216.34      20.45 ms  20.30 ms  20.25 ms  0.0%  10
