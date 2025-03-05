@@ -1,7 +1,7 @@
 #include <stdio.h>
 void main()
 {
-  int in,out,bsize,n,bucket=0;
+	int in,out,bsize,n,bucket=0;
 	printf("Enter the bucket size: ");
 	scanf("%d",&bsize);
 	printf("Enter the number of inputs: ");
@@ -25,6 +25,6 @@ void main()
 		}
 		bucket=bucket-out;
 		printf("\nAfter outgoing, bucket status : %d out of %d\n",bucket,bsize);
-    n--;                                                                                                                                                        
+    		n--;                                                                                                                                                        
 	}
 }
