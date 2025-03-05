@@ -38,7 +38,7 @@ int main(void)
 	//Get input from user:
 	printf("Enter filename: ");
 	scanf("%s",name);
-	printf("Enter the new file name\t");
+	printf("Enter the new file name:\t");
 	scanf("%s",fname);
 	fp=fopen(fname,"w");
 	send(socket_desc,name,sizeof(name),0);
