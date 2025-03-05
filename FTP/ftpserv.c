@@ -85,8 +85,7 @@ int main(void)
 
 	    
 	// Closing the socket:
-	close(client_sock);
-	close(socket_desc); // Close the server socket
+	close(socket_desc);
     
 	return 0; // Exit the program successfully
 }
