@@ -78,7 +78,7 @@ int main(void)
 	    	}
 	    	if(!fgets(fileread,sizeof(fileread),fp))
 	    	{
-			printf("Done..");
+			printf("Done..\n");
 			send(client_sock,"completed",9,0);
 		}
 	}
